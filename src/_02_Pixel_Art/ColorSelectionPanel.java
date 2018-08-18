@@ -16,7 +16,7 @@ import javax.swing.event.ChangeListener;
 
 public class ColorSelectionPanel extends JPanel implements MouseListener, ChangeListener{
 	private static final long serialVersionUID = 1L;
-	
+
 	public static final int MAX_COLOR = 256;
 	
 	private JSlider rSlider;
@@ -33,6 +33,7 @@ public class ColorSelectionPanel extends JPanel implements MouseListener, Change
 	private BufferedImage colorImage;
 	
 	public ColorSelectionPanel() {
+		
 		rSlider = new JSlider(JSlider.VERTICAL);
 		gSlider = new JSlider(JSlider.VERTICAL);
 		bSlider = new JSlider(JSlider.VERTICAL);
@@ -115,7 +116,7 @@ public class ColorSelectionPanel extends JPanel implements MouseListener, Change
 		}
 		
 		color = new Color(r, g, b);
-
+		//gp.setColor(color);
 		for(int i = 0; i < MAX_COLOR; i++) {
 			for(int j = 0; j < MAX_COLOR; j++) {
 				colorImage.setRGB(j, i, color.getRGB());

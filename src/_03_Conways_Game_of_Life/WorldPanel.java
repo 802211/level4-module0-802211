@@ -160,7 +160,7 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 	repaint();
 
 	}
-
+ 
 	// 9. Complete the method.
 	// It returns an array list of the 8 or less neighbors of the
 	// cell identified by x and y

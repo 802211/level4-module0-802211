@@ -98,29 +98,67 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 
 	// advances world one step
 	public void step() {
-		//7. iterate through cells and get their neighbors
-		//int neighbors;
-		for(int i = 0; i<cells[i].length; i++) {
-			for(int j = 0; j<cells.length; j++) {
+		// 7. iterate through cells and get their neighbors
+		// int neighbors;
+		/*
+		 1√		 2√		 3 		 4		 5		 6		 7   	 8 	 	 9
+		0OO		O0O		OO0		OOO		OOO		OOO		OOO		OOO		OOO
+		OOO		OOO		OOO		0OO		O0O		OO0		OOO		OOO		OOO
+		OOO		OOO		OOO		OOO		OOO		OOO		0OO		O0O		O0O
+		
+		*/
+		for (int i = 0; i < cells[i].length; i++) {
+			for (int j = 0; j < cells.length; j++) {
 				
-			if(i==0&&j==0&&cells[i][]) {	
 				
-				cells[i][j].neighbors = 0;
+				if (j == 0 && i==0) {
+					if (cells[i][j + 1].isAlive = true) {
+						cells[i][j].neighbors++;
+					}
+					if (cells[i+1][j].isAlive = true) {
+						cells[i][j].neighbors++;
+					}
+					if (cells[i+1][j+1].isAlive = true) {
+						cells[i][j].neighbors++;
+					}
+				}
+				
+				else if (j != cells.length - 1 && j != 0 && i ==0) {
+					if (cells[i][j + 1].isAlive = true) {
+						cells[i][j].neighbors++;
+					
+					}
+					if(cells[i][j - 1].isAlive = true) {
+						cells[i][j].neighbors++;
+					}
+					if(cells[i+1][j + 1].isAlive = true) {
+						cells[i][j].neighbors++;
+					}
+					if(cells[i+1][j - 1].isAlive = true) {
+						cells[i][j].neighbors++;
+					}
+					if(cells[i+1][j].isAlive = true) {
+						cells[i][j].neighbors++;
+					}
+				}
+				
+				
+				
 			}
-			
-			}
+
 		}
-		
-		//8. check if each cell should live or die
-//		for(int i = 0; i<cells[i].length; i++) {
-//			for(int j = 0; j<cells.length; j++) {
-//				cells[i][j].liveOrDie(numNeighbors);
-//			}
-//		}
-//		
-		
-		
-		repaint();
+	}
+
+	// 8. check if each cell should live or die
+	// for(int i = 0; i<cells[i].length; i++) {
+	// for(int j = 0; j<cells.length; j++) {
+	// cells[i][j].liveOrDie(numNeighbors);
+	// }
+	// }
+	//
+
+	repaint();
+
 	}
 
 	// 9. Complete the method.

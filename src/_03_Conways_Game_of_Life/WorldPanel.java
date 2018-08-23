@@ -99,73 +99,223 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 	// advances world one step
 	public void step() {
 		// 7. iterate through cells and get their neighbors
-		// int neighbors;
-		/*
-		 1√		 2√		 3 		 4		 5		 6		 7   	 8 	 	 9
-		0OO		O0O		OO0		OOO		OOO		OOO		OOO		OOO		OOO
-		OOO		OOO		OOO		0OO		O0O		OO0		OOO		OOO		OOO
-		OOO		OOO		OOO		OOO		OOO		OOO		0OO		O0O		O0O
-		
-		*/
+		//
+
+		int[][] neighbors = new int[cellsPerRow][cellsPerRow];
+		for (int i = 0; i < neighbors[cellsPerRow].length; i++) {
+			for (int j = 0; j < neighbors.length; j++) {
+				neighbors[i][j] = getLivingNeighbors(i, j);
+			}
+		}
+
+		// 8. check if each cell should live or die
 		for (int i = 0; i < cells[i].length; i++) {
 			for (int j = 0; j < cells.length; j++) {
-				
-				
-				if (j == 0 && i==0) {
-					if (cells[i][j + 1].isAlive = true) {
-						cells[i][j].neighbors++;
-					}
-					if (cells[i+1][j].isAlive = true) {
-						cells[i][j].neighbors++;
-					}
-					if (cells[i+1][j+1].isAlive = true) {
-						cells[i][j].neighbors++;
-					}
-				}
-				
-				else if (j != cells.length - 1 && j != 0 && i ==0) {
-					if (cells[i][j + 1].isAlive = true) {
-						cells[i][j].neighbors++;
-					
-					}
-					if(cells[i][j - 1].isAlive = true) {
-						cells[i][j].neighbors++;
-					}
-					if(cells[i+1][j + 1].isAlive = true) {
-						cells[i][j].neighbors++;
-					}
-					if(cells[i+1][j - 1].isAlive = true) {
-						cells[i][j].neighbors++;
-					}
-					if(cells[i+1][j].isAlive = true) {
-						cells[i][j].neighbors++;
-					}
-				}
-				
-				
-				
+				cells[i][j].liveOrDie(neighbors[i][j]);
 			}
-
 		}
 	}
-
-	// 8. check if each cell should live or die
-	// for(int i = 0; i<cells[i].length; i++) {
-	// for(int j = 0; j<cells.length; j++) {
-	// cells[i][j].liveOrDie(numNeighbors);
-	// }
-	// }
 	//
 
-	repaint();
+	// repaint();
 
-	}
- 
 	// 9. Complete the method.
 	// It returns an array list of the 8 or less neighbors of the
 	// cell identified by x and y
+	
+	///////*(above) no it doesn't, return an int.
+
 	public int getLivingNeighbors(int x, int y) {
-		return 0;
+		int neighbors = 0;
+		
+//	  	0OO
+//	  	0OO
+//	    0OO
+		if (x == 0) {
+//		  	0OO
+//		  	OOO
+//		    OOO
+			if (y == 0) {
+				if (cells[x][y + 1].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x + 1][y].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x + 1][y + 1].isAlive = true) {
+					neighbors++;
+				}
+			}
+//		  	OOO
+//		  	0OO
+//		    OOO
+			if (y != cells.length - 1 && y != 0) {
+				if (cells[x][y + 1].isAlive = true) {
+					neighbors++;
+
+				}
+				if (cells[x][y - 1].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x + 1][y + 1].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x + 1][y - 1].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x + 1][y].isAlive = true) {
+					neighbors++;
+				}
+			}
+//		  	OOO
+//		  	OOO
+//		    0OO
+			if (y == cells.length - 1) {
+				if (cells[x][y + 1].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x + 1][y].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x + 1][y - 1].isAlive = true) {
+					neighbors++;
+				}
+
+			}
+		}
+//	  	O0O
+//	  	O0O
+//	    O0O
+		if (x != 0 && x != cells.length - 1) {
+//		  	O0O
+//		  	OOO
+//		    OOO
+			if (y == 0) {
+				if (cells[x][y + 1].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x - 1][y].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x - 1][y + 1].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x + 1][y].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x + 1][y + 1].isAlive = true) {
+					neighbors++;
+				}
+			}
+//		  	OOO
+//		  	O0O
+//		    OOO
+			if (y != 0 && y != cells.length - 1) {
+				if (cells[x - 1][y - 1].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x - 1][y].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x - 1][y + 1].isAlive = true) {
+					neighbors++;
+				}
+
+				if (cells[x + 1][y].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x + 1][y + 1].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x + 1][y - 1].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x][y - 1].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x][y + 1].isAlive = true) {
+					neighbors++;
+				}
+			}
+//		  	OOO
+//		  	OOO
+//		    O0O
+			if (y != 0 && y != cells.length - 1) {
+				if (cells[x - 1][y - 1].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x - 1][y].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x][y - 1].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x + 1][y - 1].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x + 1][y].isAlive = true) {
+					neighbors++;
+				}
+			}
+		}
+//	  	OO0
+//	  	OO0
+//	    OO0
+		if (x == cells.length - 1) {
+//		  	OOO
+//		  	OOO
+//		    OO0
+			if (y == cells.length - 1) {
+				if (cells[x - 1][y].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x][y - 1].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x - 1][y - 1].isAlive = true) {
+					neighbors++;
+				}
+			}
+
+//		  	OOO
+//		  	OO0
+//		    OOO
+			if (y != 0 && y != cells.length - 1) {
+				if (cells[x - 1][y].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x - 1][y - 1].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x - 1][y + 1].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x][y - 1].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x][y + 1].isAlive = true) {
+					neighbors++;
+				}
+			}
+//		  	OO0
+//		  	OOO
+//		    OOO
+
+			if (y == 0) {
+				if (cells[x - 1][y].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x][y + 1].isAlive = true) {
+					neighbors++;
+				}
+				if (cells[x - 1][y + 1].isAlive = true) {
+					neighbors++;
+				}
+			}
+
+		}
+
+		return neighbors;
 	}
 
 	@Override
@@ -190,7 +340,13 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 		// 10. Use e.getX() and e.getY() to determine
 		// which cell is clicked. Then toggle
 		// the isAlive variable for that cell.
-
+		
+		if(cells[e.getX()][e.getY()].isAlive = true) {
+			cells[e.getX()][e.getY()].isAlive = false;
+		}
+		if(cells[e.getX()][e.getY()].isAlive = false) {
+			cells[e.getX()][e.getY()].isAlive = true;
+		}
 		repaint();
 	}
 

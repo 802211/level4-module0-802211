@@ -114,10 +114,11 @@ System.out.println(cpr);
 				cells[j][i].liveOrDie(neighbors[j][i]);
 			}
 		}
+		 repaint();
 	}
 	//
 
-	// repaint();
+	
 
 	// 9. Complete the method.
 	// It returns an array list of the 8 or less neighbors of the
@@ -129,27 +130,27 @@ System.out.println(cpr);
 		int neighbors = 0;
 		
 		if(x!=0) {
-			if (cells[x - 1][y].isAlive = true) {
+			if (cells[x - 1][y].isAlive == true) {
 				neighbors++;
 			}
 		}
 		 if(x!=cellsPerRow-1) {
-			if (cells[x + 1][y].isAlive = true) {
+			if (cells[x + 1][y].isAlive == true) {
 				neighbors++;
 			}
 		}
 		if(y!=0) {
-			if (cells[x][y-1].isAlive = true) {
+			if (cells[x][y-1].isAlive == true) {
 				neighbors++;
 			}
 		}
 		 if(y!=cellsPerRow-1) {
-			if (cells[x][y+1].isAlive = true) {
+			if (cells[x][y+1].isAlive == true) {
 				neighbors++;
 			}
 		}
 		if(x!=0 && y != 0) {
-			if (cells[x-1][y - 1].isAlive = true) {
+			if (cells[x-1][y - 1].isAlive == true) {
 				neighbors++;
 			}
 			
@@ -157,24 +158,26 @@ System.out.println(cpr);
 
 		if(x!=0 && y!=cellsPerRow-1) {
 			
-			if (cells[x - 1][y+1].isAlive = true) {
+			if (cells[x - 1][y+1].isAlive == true) {
 				neighbors++;
 			}
 			
 		}
 		if(x!=cellsPerRow-1 && y!=cellsPerRow-1) {
 			
-			if (cells[x + 1][y+1].isAlive = true) {
+			if (cells[x + 1][y+1].isAlive == true) {
 				neighbors++;
 			}
 		}
 		if(x!=cellsPerRow-1 && y!=0) {
 		
-			if (cells[x + 1][y-1].isAlive = true) {
+			if (cells[x + 1][y-1].isAlive == true) {
 				neighbors++;
 			}
 			
 		}
+		//System.out.println(neighbors);
+		//System.out.println(cells[0][0].isAlive);
 		return neighbors;
 	}
 
@@ -204,7 +207,7 @@ System.out.println(cpr);
 		if(cells[e.getX()/cellSize][e.getY()/cellSize].isAlive == true) {
 			cells[e.getX()/cellSize][e.getY()/cellSize].isAlive = false;
 		}
-		if(cells[e.getX()/cellSize][e.getY()/cellSize].isAlive == false) {
+		else if(cells[e.getX()/cellSize][e.getY()/cellSize].isAlive == false) {
 			cells[e.getX()/cellSize][e.getY()/cellSize].isAlive = true;
 		}
 		repaint();
